@@ -11,11 +11,13 @@ public class Generator {
     private Languages languages = new Languages();
 
     // Returns a random language code
-    private String randomLanguage() {
+    protected String randomLanguage() {
         Map<String, String> lan = languages.getCodeToLanguage();
         int n = lan.size();
 
-        rand.nextInt(n);
-        return lan.get("en");
+        Object[] values = lan.keySet().toArray();
+        int randIndex = rand.nextInt(n);
+
+        return (String) values[randIndex];
     }
 }
